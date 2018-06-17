@@ -2,7 +2,7 @@ require "testqit/version"
 
 module Testqit
   # Your code goes here...
-  def assert_equals(a,b)
+  def self.assert_equals(a,b)
     assert(a == b)
   end 
 
