@@ -2,15 +2,15 @@ require "testqit/version"
 
 module Testqit
   # Your code goes here...
-  def self.assert_equals(a,b)
-    assert(a == b)
+  def self.assert_equals(a, b)
+    assert(a == b, "Failed assert_equals: expected #{a} to equal #{b}")
   end 
 
-  def self.assert(test)
-    raise RuntimeError, "Failed test", caller unless test
+  def self.assert(test, msg = "Failed test")
+    unless test then
+      bt = caller.drop_while { |s| s =~ /#{__FILE__}/ }
+      raise RuntimeError, msg, bt
   end
-  # Your code goes here...
-
   # def self.say_hello_world
   #   puts create_phrase
   # end
